@@ -6,9 +6,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import br.com.caelum.agiletickets.acceptance.page.EstabelecimentosPage;
 
@@ -40,6 +42,17 @@ public class EstabelecimentoTest {
 		estabelecimentos.adicioneEstabelecimento("Caelum", "R. Vergueiro, 3185");
 
 		estabelecimentos.ultimaLinhaDeveConter("Caelum", "R. Vergueiro, 3185");
+	}
+	
+	@Test
+	public void adicionaEstabelecimento() throws Exception {
+		browser.get(BASE_URL + "/estabelecimentos");
+		browser.findElement(By.id("nome")).sendKeys("CAELUMMMM");
+		browser.findElement(By.id("endereco")).sendKeys("Rua Vergueiro, 3185");
+		Select select = (Select) browser.findElement(By.id("estacionamento"));
+		select.selectByVisibleText("Não");
+		
+		
 	}
 
 	@Test
