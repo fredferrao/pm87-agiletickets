@@ -30,7 +30,7 @@ public class EspetaculoTest {
 		ivete.getSessoes().add(sessaoComIngressosSobrando(3));
 		ivete.getSessoes().add(sessaoComIngressosSobrando(2));
 
-		assertTrue(ivete.vagas(7));
+		assertTrue(ivete.vagas(5));
 	}
 
 	@Test
