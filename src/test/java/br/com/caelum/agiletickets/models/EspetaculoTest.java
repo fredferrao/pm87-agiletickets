@@ -1,14 +1,26 @@
 package br.com.caelum.agiletickets.models;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.agiletickets.builder.EspetaculoBuilder;
+
 public class EspetaculoTest {
+	private Espetaculo espetaculo;
+	
+	@Before
+	public void criaEspetaculo() {
+		EspetaculoBuilder criaEspetaculo = new EspetaculoBuilder();
+		espetaculo = criaEspetaculo.chamado("a volta dos que nao foram").cria();
+	}
 
 	@Test
 	public void deveInformarSeEhPossivelReservarAQuantidadeDeIngressosDentroDeQualquerDasSessoes() {
@@ -18,7 +30,7 @@ public class EspetaculoTest {
 		ivete.getSessoes().add(sessaoComIngressosSobrando(3));
 		ivete.getSessoes().add(sessaoComIngressosSobrando(2));
 
-		assertTrue(ivete.vagas(5));
+		assertTrue(ivete.vagas(7));
 	}
 
 	@Test
